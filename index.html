@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+  <head>
+    <title>My Site</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="site-width">
+      <header class="site-header">
+        <h1>
+          <a href="/" class="site-logo">
+            London<span>Creative+</span>
+          </a>
+        </h1>
+        <address>
+          <p>phone: +44 208 9885</p>
+          <p>email: mymail@coomarakia.com</p>
+        </address>
+      </header>
+      <main class="main-container">
+        <nav class="site-nav">
+          <ul class="site-menu">
+            <li class="active"><a href="#0">Home</a></li>
+            <li><a href="#0">About</a></li>
+            <li><a href="#0">Portfolio</a>
+              <ul class="sub-menu">
+                <li><a href="#0">Web Design</a></li>
+                <li><a href="#0">Print Design</a></li>
+                <li><a href="#0">Corporate Identity</a></li>
+              </ul>
+            </li>
+            <li><a href="#0">Blog</a></li>
+            <li><a href="#0">Contact</a></li>
+          </ul>
+          <form class="search-form">
+            <input type="text" placeholder="lightning bolt">
+            <input type="submit" value="Search">
+          </form>
+        </nav>
+        <div class="slider">
+          <figure class="slider-image">
+            <img src="images/slider-1-big.jpg">
+            <figcaption class="slider-caption">
+              <span>/people/</span>
+              <p>Ricky while playing some disco last night</p>
+            </figcaption>
+          </figure>
+          <div class="slider-nav">
+            <span class="btn btn-prev"></span>
+            <span class="btn btn-next"></span>
+            <ul class="slider-carousel">
+              <li><img src="images/slider-1-thumb.jpg" data-large="images/slider-1-big.jpg" alt=""></li>
+              <li><img src="images/slider-2-thumb.jpg" data-large="images/slider-2-big.jpg" alt=""></li>
+              <li><img src="images/slider-3-thumb.jpg" data-large="images/slider-3-big.jpg" alt=""></li>
+              <li><img src="images/slider-4-thumb.jpg" data-large="images/slider-4-big.jpg" alt=""></li>
+              <li><img src="images/slider-5-thumb.jpg" data-large="images/slider-5-big.jpg" alt=""></li>
+              <li><img src="images/slider-6-thumb.jpg" data-large="images/slider-6-big.jpg" alt=""></li>
+              <li><img src="images/slider-7-thumb.jpg" data-large="images/slider-7-big.jpg" alt=""></li>
+            </ul>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript">
+      var test = $(".slider-carousel").find("li").find("img").click(function(){
+      var temp_source = $(this).data("large");
+      $(".slider-image").find("img").prop("src",temp_source);
+        //console.log($(".slider-carousel").children());
+        //arrays!!
+        var imgsArray = $(".slider-carousel").find("li").find("img");
+        var imageSources = [];
+        for (var i = 0; i <= imgsArray.length - 1; i++) {
+          imageSources.push(imgsArray[i]["src"]);
+        }
+        console.log(imageSources);
+      });
+      var imgWidth = $(".slider-carousel li img").width() + 15 - 55;
+      $(".btn-next").click(function() {
+        if (imgWidth < 464) {
+        $(".slider-carousel").animate({"left": (imgWidth * -1) + "px"},800); 
+        imgWidth += $(".slider-carousel li img").width() + 15;
+        } else {
+          $(".slider-carousel").animate({"left": "55px"},800);
+          imgWidth = $(".slider-carousel li img").width() + 15 - 55;
+        }
+      });
+    </script>
+
+  </body>
+</html>
+
+
+
+
+
+
+
+
