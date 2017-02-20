@@ -66,28 +66,31 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript">
-      var test = $(".slider-carousel").find("li").find("img").click(function(){
-      var temp_source = $(this).data("large");
-      $(".slider-image").find("img").prop("src",temp_source);
-        //console.log($(".slider-carousel").children());
-        //arrays!!
-        var imgsArray = $(".slider-carousel").find("li").find("img");
-        var imageSources = [];
-        for (var i = 0; i <= imgsArray.length - 1; i++) {
-          imageSources.push(imgsArray[i]["src"]);
-        }
-        console.log(imageSources);
+      var test = $(".slider-carousel").find("li").find("img").click(function(){ // detect image click event
+      var temp_source = $(this).data("large"); // store image source
+      $(".slider-image").find("img").prop("src",temp_source); // change image src property to new source
       });
-      var imgWidth = $(".slider-carousel li img").width() + 15 - 55;
+
+
+		var imgsElement = $(".slider-carousel").find("li").find("img"); // get all images in the slider as DOM objects
+		var imageSources = [];
+		for (var i = 0; i <= imgsElement.length - 1; i++) { // foreach image element get its src attribute and insert it into the array
+			imageSources.push(imgsElement[i]["src"]);
+		}
+		//console.log(imageSources);
+
+      var imgWidth = $(".slider-carousel li img").width() + 15 - 55; //initialize image width with appropriate adjustments
       $(".btn-next").click(function() {
         if (imgWidth < 464) {
-        $(".slider-carousel").animate({"left": (imgWidth * -1) + "px"},800); 
-        imgWidth += $(".slider-carousel li img").width() + 15;
+        $(".slider-carousel").animate({"left": (imgWidth * -1) + "px"},800); //perform animation
+        imgWidth += $(".slider-carousel li img").width() + 15; // increase image width to allow further animation
         } else {
           $(".slider-carousel").animate({"left": "55px"},800);
-          imgWidth = $(".slider-carousel li img").width() + 15 - 55;
+          imgWidth = $(".slider-carousel li img").width() + 15 - 55; // reset image width to when we run out of images
         }
       });
+
+      // TODO use jquery append for infinite scrolling.
     </script>
 
   </body>
